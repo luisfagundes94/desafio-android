@@ -6,9 +6,10 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     namespace "com.picpay.desafio.android"
-    compileSdkVersion 34
+
     defaultConfig {
         applicationId "com.picpay.desafio.android"
+        compileSdk 34
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
