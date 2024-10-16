@@ -1,11 +1,11 @@
-package com.picpay.desafio.android.data.model
+package com.picpay.desafio.android.core.data.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class UserEntity(
+data class UserResponse(
     @SerializedName("img") val img: String,
     @SerializedName("name") val name: String,
     @SerializedName("id") val id: Int,
