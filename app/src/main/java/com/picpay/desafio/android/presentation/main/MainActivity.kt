@@ -22,12 +22,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setUpBinding()
         setUpAdapter()
         setUpObservers()
-
-        viewModel.getUsers()
     }
 
     private fun setUpBinding() {
@@ -57,7 +54,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun handleSuccessState(users: List<User>) = with(binding) {
         progressBar.hide()
-        adapter.users = users
+        adapter.submitList(users)
     }
 
     private fun handleErrorState() = with(binding) {
