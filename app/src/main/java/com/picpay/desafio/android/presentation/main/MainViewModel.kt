@@ -22,6 +22,10 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableLiveData<MainUiState>()
     val uiState: LiveData<MainUiState> = _uiState
 
+    init {
+        getUsers()
+    }
+
     fun getUsers() {
         _uiState.value = MainUiState.Loading
         viewModelScope.launch(dispatcher) {
