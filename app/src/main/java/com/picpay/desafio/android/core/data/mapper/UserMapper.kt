@@ -10,11 +10,4 @@ object UserMapper {
         name = name,
         username = username
     )
-
-    fun User.toEntity() = UserResponse(
-        id = id,
-        img = image,
-        name = name,
-        username = username
-    )
 }
