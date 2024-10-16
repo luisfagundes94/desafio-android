@@ -1,8 +1,10 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.presentation.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.picpay.desafio.android.R
 import com.picpay.desafio.android.databinding.ListItemUserBinding
+import com.picpay.desafio.android.domain.model.User
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
@@ -16,7 +18,7 @@ class UserListItemViewHolder(
         progressBar.visibility = View.VISIBLE
 
         Picasso.get()
-            .load(user.img)
+            .load(user.image)
             .error(R.drawable.ic_round_account_circle)
             .into(picture, picassoCallback())
     }

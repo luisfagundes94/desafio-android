@@ -1,5 +1,7 @@
 package com.picpay.desafio.android
 
+import com.picpay.desafio.android.data.service.PicPayService
+import com.picpay.desafio.android.domain.model.User
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 import retrofit2.Call
