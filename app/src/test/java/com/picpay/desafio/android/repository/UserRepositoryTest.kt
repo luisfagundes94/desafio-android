@@ -4,6 +4,7 @@ import com.picpay.desafio.android.core.data.mapper.UserMapper.toDomain
 import com.picpay.desafio.android.core.data.repository.UserRepositoryImpl
 import com.picpay.desafio.android.core.data.service.PicPayService
 import com.picpay.desafio.android.core.common.Result
+import com.picpay.desafio.android.core.data.database.UserDao
 import com.picpay.desafio.android.core.domain.repository.UserRepository
 import com.picpay.desafio.android.fake.model.fakeUserResponseList
 import io.mockk.coEvery
@@ -20,11 +21,13 @@ import org.junit.Test
 class UserRepositoryTest {
 
     private val service: PicPayService = mockk()
+    private val userDao: UserDao = mockk()
+
     private lateinit var userRepository: UserRepository
 
     @Before
     fun setUp() {
-        userRepository = UserRepositoryImpl(service)
+        userRepository = UserRepositoryImpl(service, userDao)
     }
 
     @Test
