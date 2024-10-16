@@ -7,11 +7,11 @@ import com.picpay.desafio.android.core.domain.repository.UserRepository
 import com.picpay.desafio.android.fake.model.fakeUserList
 import com.picpay.desafio.android.presentation.main.MainUiState
 import com.picpay.desafio.android.presentation.main.MainViewModel
-import com.picpay.desafio.android.testing.MainDispatcherRule
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -23,8 +23,7 @@ class MainViewModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @get:Rule
-    val dispatcherRule = MainDispatcherRule()
+    private val testDispatcher = UnconfinedTestDispatcher()
 
     private val repository = mockk<UserRepository>()
     private val observer = mockk<Observer<MainUiState>>(relaxed = true)
@@ -35,7 +34,7 @@ class MainViewModelTest {
     fun setUp() {
         coEvery { repository.getUsers() } returns Result.Success(emptyList())
 
-        viewModel = MainViewModel(repository, dispatcherRule.testDispatcher)
+        viewModel = MainViewModel(repository, testDispatcher)
         viewModel.uiState.observeForever(observer)
     }
 
