@@ -17,14 +17,21 @@ private const val PIC_PAY_BASE_API_URL = "https://609a908e0f5a13001721b74e.mocka
 object DataModule {
 
     @Provides
-    fun providePicPayService() = Retrofit.Builder()
-        .baseUrl(PIC_PAY_BASE_API_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(PicPayService::class.java)
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
+            .build()
+    }
 
     @Provides
-    fun provideOkHttpClient() = OkHttpClient.Builder()
-        .addInterceptor(HttpLoggingInterceptor())
-        .build()
+    fun providePicPayService(okHttpClient: OkHttpClient): PicPayService {
+        return Retrofit.Builder()
+            .baseUrl(PIC_PAY_BASE_API_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(PicPayService::class.java)
+    }
 }
