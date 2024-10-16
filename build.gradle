@@ -16,10 +16,8 @@ buildscript {
         circleimageview_version = '3.0.0'
 
         junit_version = '4.13.2'
-        mockito_version = '5.14.1'
-        mockito_kotlin_version = '5.4.0'
+        mockk_version = '1.13.13'
 
-        test_runner_version = '1.6.2'
         espresso_version = '3.6.1'
 
         hilt_version = '2.52'
@@ -47,8 +45,4 @@ allprojects {
         google()
         mavenCentral()
     }
-}
-
-tasks.register('clean', Delete) {
-    delete rootProject.layout.buildDirectory
 }
