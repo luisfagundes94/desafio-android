@@ -35,6 +35,12 @@ android {
         }
     }
 
+    sourceSets {
+        test {
+            java.srcDirs = ['src/test/java', 'src/main/java']
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -78,5 +84,7 @@ dependencies {
 
     testImplementation "junit:junit:$junit_version"
     testImplementation "io.mockk:mockk:$mockk_version"
+    // kotlin reflect
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     testImplementation "androidx.arch.core:core-testing:$core_testing_version"
 }
