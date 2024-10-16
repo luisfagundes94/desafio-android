@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.domain.model
+package com.picpay.desafio.android.core.domain.model
 
 data class User(
     val id: Int,
