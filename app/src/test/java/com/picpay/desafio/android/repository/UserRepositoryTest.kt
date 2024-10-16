@@ -17,7 +17,7 @@ import org.junit.Before
 import org.junit.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class UserRepositoryImplTest {
+class UserRepositoryTest {
 
     private val service: PicPayService = mockk()
     private lateinit var userRepository: UserRepository
