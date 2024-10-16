@@ -1,11 +1,11 @@
 package com.picpay.desafio.android
 
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
-import junit.framework.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import org.junit.Test
 import retrofit2.Call
 import retrofit2.Response
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 
 class ExampleServiceTest {
 
