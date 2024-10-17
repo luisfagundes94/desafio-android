@@ -1,4 +1,4 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.feature.contact
 
 import androidx.lifecycle.MutableLiveData
 import androidx.test.core.app.ActivityScenario
@@ -8,10 +8,9 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.picpay.desafio.android.R as contactR
-import com.picpay.desafio.android.designsystem.R as designSystemR
+import com.picpay.desafio.android.feature.contact.R as contactR
+import com.picpay.desafio.android.core.designsystem.R as designSystemR
 import com.picpay.desafio.android.domain.model.User
-import com.picpay.desafio.android.feature.contact.ContactListUiState
 import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -32,21 +31,20 @@ class ContactListActivityTest {
     @JvmField
     val viewModel: ContactListViewModel = mockk(relaxed = true)
 
-    val userList =
-        listOf(
-            User(
-                id = 1,
-                name = "Bob Williams",
-                username = "bob",
-                image = "https://avatars.githubusercontent.com/u/1?v=4"
-            ),
-            User(
-                id = 2,
-                name = "Sam Smith",
-                username = "sam",
-                image = "https://avatars.githubusercontent.com/u/2?v=4"
-            )
+    val userList = listOf(
+        User(
+            id = 1,
+            name = "Bob Williams",
+            username = "bob",
+            image = "https://avatars.githubusercontent.com/u/1?v=4"
+        ),
+        User(
+            id = 2,
+            name = "Sam Smith",
+            username = "sam",
+            image = "https://avatars.githubusercontent.com/u/2?v=4"
         )
+    )
 
     @Before
     fun setUp() {
