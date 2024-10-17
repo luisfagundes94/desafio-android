@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.feature.contact
+package com.picpay.desafio.android.contact.list
 
 import com.picpay.desafio.android.domain.model.User
 

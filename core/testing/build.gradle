@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.picpay.desafio.android.core.testing'
+    namespace 'com.picpay.desafio.android.testing'
     compileSdk 34
 
     defaultConfig {

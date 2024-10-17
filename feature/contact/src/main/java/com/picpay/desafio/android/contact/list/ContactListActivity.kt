@@ -1,12 +1,13 @@
-package com.picpay.desafio.android.feature.contact
+package com.picpay.desafio.android.contact.list
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.picpay.desafio.android.contact.R
+import com.picpay.desafio.android.contact.adapter.UserListAdapter
+import com.picpay.desafio.android.contact.databinding.ActivityContactListBinding
 import com.picpay.desafio.android.domain.model.User
-import com.picpay.desafio.android.feature.contact.adapter.UserListAdapter
-import com.picpay.desafio.android.feature.contact.databinding.ActivityContactListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

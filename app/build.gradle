@@ -15,6 +15,8 @@ android {
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildFeatures {
@@ -52,6 +54,7 @@ dependencies {
     implementation project(":core:data")
     implementation project(":core:domain")
     implementation project(":core:designsystem")
+    implementation project(":core:testing")
     implementation project(":feature:contact")
 
     implementation "androidx.core:core-ktx:$core_ktx_version"

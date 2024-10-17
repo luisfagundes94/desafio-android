@@ -1,12 +1,12 @@
-package com.android.contact.viewmodel
+package com.picpay.desafio.android.contact.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.picpay.desafio.android.common.Result
+import com.picpay.desafio.android.contact.list.ContactListUiState
+import com.picpay.desafio.android.contact.list.ContactListViewModel
 import com.picpay.desafio.android.domain.repository.UserRepository
-import com.picpay.desafio.android.feature.contact.ContactListUiState
-import com.picpay.desafio.android.feature.contact.ContactListViewModel
-import com.picpay.desafio.android.model.fakeUserList
+import com.picpay.desafio.android.testing.model.fakeUserList
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify

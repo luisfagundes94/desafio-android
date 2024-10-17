@@ -1,10 +1,10 @@
-package com.picpay.desafio.android.feature.contact.adapter
+package com.picpay.desafio.android.contact.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.picpay.desafio.android.contact.R
+import com.picpay.desafio.android.contact.databinding.ListItemUserBinding
 import com.picpay.desafio.android.domain.model.User
-import com.picpay.desafio.android.feature.contact.R
-import com.picpay.desafio.android.feature.contact.databinding.ListItemUserBinding
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 

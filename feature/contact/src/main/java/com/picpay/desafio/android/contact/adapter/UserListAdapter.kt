@@ -1,10 +1,10 @@
-package com.picpay.desafio.android.feature.contact.adapter
+package com.picpay.desafio.android.contact.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import com.picpay.desafio.android.contact.databinding.ListItemUserBinding
 import com.picpay.desafio.android.domain.model.User
-import com.picpay.desafio.android.feature.contact.databinding.ListItemUserBinding
 
 class UserListAdapter : ListAdapter<User, UserListItemViewHolder>(UserDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListItemViewHolder {

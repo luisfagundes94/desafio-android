@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.feature.contact
+package com.picpay.desafio.android.contact
 
 import androidx.lifecycle.MutableLiveData
 import androidx.test.core.app.ActivityScenario
@@ -7,9 +7,11 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.picpay.desafio.android.feature.contact.R as contactR
-import com.picpay.desafio.android.core.designsystem.R as designSystemR
+import com.picpay.desafio.android.contact.R as contactR
+import com.picpay.desafio.android.contact.list.ContactListActivity
+import com.picpay.desafio.android.contact.list.ContactListUiState
+import com.picpay.desafio.android.contact.list.ContactListViewModel
+import com.picpay.desafio.android.designsystem.R as designSystemR
 import com.picpay.desafio.android.domain.model.User
 import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -19,10 +21,8 @@ import io.mockk.mockk
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
 @HiltAndroidTest
-@RunWith(AndroidJUnit4::class)
 class ContactListActivityTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -53,7 +53,7 @@ class ContactListActivityTest {
 
     @Test
     fun testTitleIsDisplayed() {
-        launchMainActivity()
+        launchContactListActivity()
 
         // Check if title is displayed no matter the state
         onView(withId(contactR.id.title))
@@ -64,7 +64,7 @@ class ContactListActivityTest {
     fun testLoadingStateIsDisplayed() {
         every { viewModel.uiState } returns MutableLiveData(ContactListUiState.Loading)
 
-        launchMainActivity()
+        launchContactListActivity()
 
         // Check that the ProgressBar (Loading View) is visible
         onView(withId(designSystemR.id.progress_bar))
@@ -75,7 +75,7 @@ class ContactListActivityTest {
     fun testSuccessStateIsDisplayed() {
         every { viewModel.uiState } returns MutableLiveData(ContactListUiState.Success(userList))
 
-        launchMainActivity()
+        launchContactListActivity()
 
         // Check that the RecyclerView (Success View) is visible
         onView(withId(contactR.id.recyclerView))
@@ -86,7 +86,7 @@ class ContactListActivityTest {
     fun testErrorStateIsDisplayed() {
         every { viewModel.uiState } returns MutableLiveData(ContactListUiState.Error(Throwable()))
 
-        launchMainActivity()
+        launchContactListActivity()
 
         // Check that the error message and retry button are visible
         onView(withId(designSystemR.id.error_message))
@@ -97,7 +97,7 @@ class ContactListActivityTest {
             .perform(click()) // Simulate a retry button click
     }
 
-    private fun launchMainActivity() {
+    private fun launchContactListActivity() {
         ActivityScenario.launch(ContactListActivity::class.java)
     }
 }

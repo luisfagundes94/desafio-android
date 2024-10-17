@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.feature.contact
+package com.picpay.desafio.android.contact.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
