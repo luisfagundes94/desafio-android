@@ -30,7 +30,7 @@ jobs:
         with:
           java-version: 17
       - name: Ktlint
-        run: bash ./gradlew ktlint --stacktrace
+        run: bash ./gradlew ktlintCheck --stacktrace
 
   lint:
     name: Run lint
