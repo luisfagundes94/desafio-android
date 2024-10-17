@@ -7,12 +7,12 @@ val fakeUserEntity =
         id = 1,
         image = "https://randomuser.me/api/portraits",
         name = "Fake User",
-        username = "fakeuser",
+        username = "fakeuser"
     )
 
 val fakeUserEntityList =
     listOf(
         fakeUserEntity,
         fakeUserEntity.copy(id = 2),
-        fakeUserEntity.copy(id = 3),
+        fakeUserEntity.copy(id = 3)
     )

@@ -29,12 +29,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setContentView(binding.root)
     }
 
-    private fun setUpAdapter() =
-        with(binding) {
-            adapter = UserListAdapter()
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-        }
+    private fun setUpAdapter() = with(binding) {
+        adapter = UserListAdapter()
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+    }
 
     private fun setUpObservers() {
         viewModel.uiState.observe(this@MainActivity) { state ->
@@ -46,22 +45,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
-    private fun handleLoadingState() =
-        with(binding) {
-            viewFlipper.displayedChild = LOADING_VIEW
-        }
+    private fun handleLoadingState() = with(binding) {
+        viewFlipper.displayedChild = LOADING_VIEW
+    }
 
-    private fun handleSuccessState(users: List<User>) =
-        with(binding) {
-            viewFlipper.displayedChild = SUCCESS_VIEW
-            adapter.submitList(users)
-        }
+    private fun handleSuccessState(users: List<User>) = with(binding) {
+        viewFlipper.displayedChild = SUCCESS_VIEW
+        adapter.submitList(users)
+    }
 
-    private fun handleErrorState() =
-        with(binding) {
-            viewFlipper.displayedChild = ERROR_VIEW
-            errorComponent.retryButton.setOnClickListener { viewModel.getUsers() }
-        }
+    private fun handleErrorState() = with(binding) {
+        viewFlipper.displayedChild = ERROR_VIEW
+        errorComponent.retryButton.setOnClickListener { viewModel.getUsers() }
+    }
 
     companion object {
         const val SUCCESS_VIEW = 0

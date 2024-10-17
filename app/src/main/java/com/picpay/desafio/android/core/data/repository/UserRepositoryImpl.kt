@@ -9,28 +9,26 @@ import com.picpay.desafio.android.core.domain.model.User
 import com.picpay.desafio.android.core.domain.repository.UserRepository
 import javax.inject.Inject
 
-class UserRepositoryImpl
-    @Inject
-    constructor(
-        private val service: PicPayService,
-        private val userDao: UserDao,
-    ) : UserRepository {
-        override suspend fun getUsers(): Result<List<User>> {
-            return try {
-                val usersFromDb = userDao.getAllUsers().map { it.toDomain() }
+class UserRepositoryImpl @Inject constructor(
+    private val service: PicPayService,
+    private val userDao: UserDao
+) : UserRepository {
+    override suspend fun getUsers(): Result<List<User>> {
+        return try {
+            val usersFromDb = userDao.getAllUsers().map { it.toDomain() }
 
-                if (usersFromDb.isNotEmpty()) {
-                    Result.Success(usersFromDb)
-                } else {
-                    val response = service.getUsers()
-                    val data = response.map { it.toDomain() }
+            if (usersFromDb.isNotEmpty()) {
+                Result.Success(usersFromDb)
+            } else {
+                val response = service.getUsers()
+                val data = response.map { it.toDomain() }
 
-                    userDao.clearUsers()
-                    userDao.insertUsers(response.map { it.toEntity() })
-                    Result.Success(data)
-                }
-            } catch (exception: Exception) {
-                Result.Error(exception)
+                userDao.clearUsers()
+                userDao.insertUsers(response.map { it.toEntity() })
+                Result.Success(data)
             }
+        } catch (exception: Exception) {
+            Result.Error(exception)
         }
     }
+}

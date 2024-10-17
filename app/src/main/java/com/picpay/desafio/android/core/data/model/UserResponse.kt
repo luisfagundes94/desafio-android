@@ -9,5 +9,5 @@ data class UserResponse(
     @SerializedName("id") val id: Int? = null,
     @SerializedName("img") val img: String? = null,
     @SerializedName("name") val name: String? = null,
-    @SerializedName("username") val username: String? = null,
+    @SerializedName("username") val username: String? = null
 ) : Parcelable

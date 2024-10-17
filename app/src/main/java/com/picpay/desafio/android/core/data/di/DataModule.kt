@@ -21,33 +21,29 @@ private const val PIC_PAY_DATABASE_NAME = "picpay_database"
 @InstallIn(SingletonComponent::class)
 object DataModule {
     @Provides
-    fun provideDatabase(
-        @ApplicationContext context: Context,
-    ) = Room.databaseBuilder(
+    fun provideDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
         context,
         PicPayDatabase::class.java,
-        PIC_PAY_DATABASE_NAME,
+        PIC_PAY_DATABASE_NAME
     ).build()
 
     @Provides
     fun provideUserDao(database: PicPayDatabase) = database.userDao()
 
     @Provides
-    fun provideOkHttpClient() =
-        OkHttpClient.Builder()
-            .addInterceptor(
-                HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                },
-            )
-            .build()
+    fun provideOkHttpClient() = OkHttpClient.Builder()
+        .addInterceptor(
+            HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+        )
+        .build()
 
     @Provides
-    fun providePicPayService(okHttpClient: OkHttpClient) =
-        Retrofit.Builder()
-            .baseUrl(PIC_PAY_BASE_API_URL)
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(PicPayService::class.java)
+    fun providePicPayService(okHttpClient: OkHttpClient) = Retrofit.Builder()
+        .baseUrl(PIC_PAY_BASE_API_URL)
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(PicPayService::class.java)
 }

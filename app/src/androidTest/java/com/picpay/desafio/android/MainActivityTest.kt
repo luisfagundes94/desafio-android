@@ -38,14 +38,14 @@ class MainActivityTest {
                 id = 1,
                 name = "Bob Williams",
                 username = "bob",
-                image = "https://avatars.githubusercontent.com/u/1?v=4",
+                image = "https://avatars.githubusercontent.com/u/1?v=4"
             ),
             User(
                 id = 2,
                 name = "Sam Smith",
                 username = "sam",
-                image = "https://avatars.githubusercontent.com/u/2?v=4",
-            ),
+                image = "https://avatars.githubusercontent.com/u/2?v=4"
+            )
         )
 
     @Before
