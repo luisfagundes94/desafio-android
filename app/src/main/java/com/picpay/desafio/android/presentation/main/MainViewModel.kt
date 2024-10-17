@@ -14,25 +14,26 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
-    private val repository: UserRepository,
-    @Dispatcher(PicPayDispatchers.IO) private val dispatcher: CoroutineDispatcher
-) : ViewModel() {
+class MainViewModel
+    @Inject
+    constructor(
+        private val repository: UserRepository,
+        @Dispatcher(PicPayDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+    ) : ViewModel() {
+        private val _uiState = MutableLiveData<MainUiState>()
+        val uiState: LiveData<MainUiState> = _uiState
 
-    private val _uiState = MutableLiveData<MainUiState>()
-    val uiState: LiveData<MainUiState> = _uiState
+        init {
+            getUsers()
+        }
 
-    init {
-        getUsers()
-    }
-
-    fun getUsers() {
-        _uiState.value = MainUiState.Loading
-        viewModelScope.launch(dispatcher) {
-            when (val result = repository.getUsers()) {
-                is Result.Success -> _uiState.postValue(MainUiState.Success(result.data))
-                is Result.Error -> _uiState.postValue(MainUiState.Error(result.exception))
+        fun getUsers() {
+            _uiState.value = MainUiState.Loading
+            viewModelScope.launch(dispatcher) {
+                when (val result = repository.getUsers()) {
+                    is Result.Success -> _uiState.postValue(MainUiState.Success(result.data))
+                    is Result.Error -> _uiState.postValue(MainUiState.Error(result.exception))
+                }
             }
         }
     }
-}

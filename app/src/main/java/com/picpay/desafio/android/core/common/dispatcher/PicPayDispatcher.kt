@@ -9,5 +9,5 @@ annotation class Dispatcher(val dispatchers: PicPayDispatchers)
 
 enum class PicPayDispatchers {
     Default,
-    IO
+    IO,
 }

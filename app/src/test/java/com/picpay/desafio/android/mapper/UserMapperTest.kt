@@ -8,15 +8,15 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class UserMapperTest {
-
     @Test
     fun `toDomain maps UserResponse to User with non-null fields`() {
-        val userResponse = mockk<UserResponse> {
-            every { id } returns 123
-            every { img } returns "https://example.com/image.jpg"
-            every { name } returns "John Doe"
-            every { username } returns "johndoe"
-        }
+        val userResponse =
+            mockk<UserResponse> {
+                every { id } returns 123
+                every { img } returns "https://example.com/image.jpg"
+                every { name } returns "John Doe"
+                every { username } returns "johndoe"
+            }
 
         val user = userResponse.toDomain()
 
@@ -28,12 +28,13 @@ class UserMapperTest {
 
     @Test
     fun `toDomain maps UserResponse to User with null fields`() {
-        val userResponse = mockk<UserResponse> {
-            every { id } returns null
-            every { img } returns null
-            every { name } returns null
-            every { username } returns null
-        }
+        val userResponse =
+            mockk<UserResponse> {
+                every { id } returns null
+                every { img } returns null
+                every { name } returns null
+                every { username } returns null
+            }
 
         val user = userResponse.toDomain()
 

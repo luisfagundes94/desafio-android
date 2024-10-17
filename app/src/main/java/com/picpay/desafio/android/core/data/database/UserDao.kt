@@ -8,7 +8,6 @@ import com.picpay.desafio.android.core.data.model.UserEntity
 
 @Dao
 interface UserDao {
-
     @Query("SELECT * FROM users")
     suspend fun getAllUsers(): List<UserEntity>
 

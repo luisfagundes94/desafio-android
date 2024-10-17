@@ -25,7 +25,6 @@ import org.junit.runner.RunWith
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
-
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
@@ -33,20 +32,21 @@ class MainActivityTest {
     @JvmField
     val viewModel: MainViewModel = mockk(relaxed = true)
 
-    val userList = listOf(
-        User(
-            id = 1,
-            name = "Bob Williams",
-            username = "bob",
-            image = "https://avatars.githubusercontent.com/u/1?v=4"
-        ),
-        User(
-            id = 2,
-            name = "Sam Smith",
-            username = "sam",
-            image = "https://avatars.githubusercontent.com/u/2?v=4"
+    val userList =
+        listOf(
+            User(
+                id = 1,
+                name = "Bob Williams",
+                username = "bob",
+                image = "https://avatars.githubusercontent.com/u/1?v=4",
+            ),
+            User(
+                id = 2,
+                name = "Sam Smith",
+                username = "sam",
+                image = "https://avatars.githubusercontent.com/u/2?v=4",
+            ),
         )
-    )
 
     @Before
     fun setUp() {
@@ -96,7 +96,7 @@ class MainActivityTest {
 
         onView(withId(R.id.retry_button))
             .check(matches(isDisplayed()))
-            .perform(click())  // Simulate a retry button click
+            .perform(click()) // Simulate a retry button click
     }
 
     private fun launchMainActivity() {

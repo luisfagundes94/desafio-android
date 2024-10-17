@@ -22,7 +22,6 @@ import org.junit.Before
 import org.junit.Test
 
 class UserRepositoryTest {
-
     private val service = mockk<PicPayService>(relaxed = true)
     private val userDao = mockk<UserDao>(relaxed = true)
 
@@ -34,63 +33,67 @@ class UserRepositoryTest {
     }
 
     @Test
-    fun `getUsers returns users from database when available`() = runTest {
-        coEvery { userDao.getAllUsers() } returns fakeUserEntityList
+    fun `getUsers returns users from database when available`() =
+        runTest {
+            coEvery { userDao.getAllUsers() } returns fakeUserEntityList
 
-        val result = userRepository.getUsers()
+            val result = userRepository.getUsers()
 
-        coVerify(exactly = 1) { userDao.getAllUsers() }
-        coVerify { service wasNot Called }
-        assertTrue(result is Result.Success)
-        assertEquals(fakeUserList, (result as Result.Success).data)
-    }
-
-    @Test
-    fun `getUsers fetches from service when database is empty`() = runTest {
-        coEvery { userDao.getAllUsers() } returns emptyList()
-
-        coEvery { service.getUsers() } returns fakeUserResponseList
-        coEvery { userDao.clearUsers() } just Runs
-        coEvery { userDao.insertUsers(fakeUserEntityList) } just Runs
-
-        val result = userRepository.getUsers()
-
-        coVerifySequence {
-            userDao.getAllUsers()
-            service.getUsers()
-            userDao.clearUsers()
-            userDao.insertUsers(fakeUserEntityList)
+            coVerify(exactly = 1) { userDao.getAllUsers() }
+            coVerify { service wasNot Called }
+            assertTrue(result is Result.Success)
+            assertEquals(fakeUserList, (result as Result.Success).data)
         }
-        assertTrue(result is Result.Success)
-        assertEquals(fakeUserList, (result as Result.Success).data)
-    }
 
     @Test
-    fun `getUsers returns error when exception occurs in database`() = runTest {
-        val exception = Exception("Database Error")
-        coEvery { userDao.getAllUsers() } throws exception
+    fun `getUsers fetches from service when database is empty`() =
+        runTest {
+            coEvery { userDao.getAllUsers() } returns emptyList()
 
-        val result = userRepository.getUsers()
+            coEvery { service.getUsers() } returns fakeUserResponseList
+            coEvery { userDao.clearUsers() } just Runs
+            coEvery { userDao.insertUsers(fakeUserEntityList) } just Runs
 
-        coVerify { userDao.getAllUsers() }
-        coVerify { service wasNot Called }
-        assertTrue(result is Result.Error)
-        assertEquals(exception, (result as Result.Error).exception)
-    }
+            val result = userRepository.getUsers()
 
-    @Test
-    fun `getUsers returns error when exception occurs in service`() = runTest {
-        coEvery { userDao.getAllUsers() } returns emptyList()
-        val exception = Exception("Service Error")
-        coEvery { service.getUsers() } throws exception
-
-        val result = userRepository.getUsers()
-
-        coVerifySequence {
-            userDao.getAllUsers()
-            service.getUsers()
+            coVerifySequence {
+                userDao.getAllUsers()
+                service.getUsers()
+                userDao.clearUsers()
+                userDao.insertUsers(fakeUserEntityList)
+            }
+            assertTrue(result is Result.Success)
+            assertEquals(fakeUserList, (result as Result.Success).data)
         }
-        assertTrue(result is Result.Error)
-        assertEquals(exception, (result as Result.Error).exception)
-    }
+
+    @Test
+    fun `getUsers returns error when exception occurs in database`() =
+        runTest {
+            val exception = Exception("Database Error")
+            coEvery { userDao.getAllUsers() } throws exception
+
+            val result = userRepository.getUsers()
+
+            coVerify { userDao.getAllUsers() }
+            coVerify { service wasNot Called }
+            assertTrue(result is Result.Error)
+            assertEquals(exception, (result as Result.Error).exception)
+        }
+
+    @Test
+    fun `getUsers returns error when exception occurs in service`() =
+        runTest {
+            coEvery { userDao.getAllUsers() } returns emptyList()
+            val exception = Exception("Service Error")
+            coEvery { service.getUsers() } throws exception
+
+            val result = userRepository.getUsers()
+
+            coVerifySequence {
+                userDao.getAllUsers()
+                service.getUsers()
+            }
+            assertTrue(result is Result.Error)
+            assertEquals(exception, (result as Result.Error).exception)
+        }
 }

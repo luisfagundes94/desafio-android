@@ -19,7 +19,6 @@ import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class MainViewModelTest {
-
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -72,4 +71,3 @@ class MainViewModelTest {
         viewModel.uiState.removeObserver(observer)
     }
 }
-

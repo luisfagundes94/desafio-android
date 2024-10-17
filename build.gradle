@@ -3,6 +3,7 @@
 buildscript {
     ext {
         kotlin_version = '2.0.21'
+        agp_version = '8.7.1'
         ksp_version = '2.0.21-1.0.25'
 
         activity_version = '1.9.3'
@@ -28,18 +29,22 @@ buildscript {
         coroutines_version = "1.9.0"
 
         room_version = '2.6.1'
+
+        ktlint_version = '12.1.1'
     }
 
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.7.1'
+        classpath "com.android.tools.build:gradle:$agp_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         classpath "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:$ksp_version"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -49,5 +54,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
     }
 }
