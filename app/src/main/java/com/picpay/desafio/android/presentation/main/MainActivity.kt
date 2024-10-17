@@ -49,18 +49,22 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun handleLoadingState() = with(binding) {
-        errorMessage.hide()
-        progressBar.show()
+        viewFlipper.displayedChild = LOADING_VIEW
     }
 
     private fun handleSuccessState(users: List<User>) = with(binding) {
-        errorMessage.hide()
-        progressBar.hide()
+        viewFlipper.displayedChild = SUCCESS_VIEW
         adapter.submitList(users)
     }
 
     private fun handleErrorState() = with(binding) {
-        progressBar.hide()
-        errorMessage.show()
+        viewFlipper.displayedChild = ERROR_VIEW
+        errorComponent.retryButton.setOnClickListener { viewModel.getUsers() }
+    }
+
+    companion object {
+        const val SUCCESS_VIEW = 0
+        const val LOADING_VIEW = 1
+        const val ERROR_VIEW = 2
     }
 }
