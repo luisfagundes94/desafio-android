@@ -13,11 +13,11 @@ class UserMapperTest {
     @Test
     fun `toDomain maps UserResponse to User with non-null fields`() {
         val userResponse = mockk<UserResponse> {
-                every { id } returns 123
-                every { img } returns "https://example.com/image.jpg"
-                every { name } returns "John Doe"
-                every { username } returns "johndoe"
-            }
+            every { id } returns 123
+            every { img } returns "https://example.com/image.jpg"
+            every { name } returns "John Doe"
+            every { username } returns "johndoe"
+        }
 
         val user = userResponse.toDomain()
 
@@ -30,11 +30,11 @@ class UserMapperTest {
     @Test
     fun `toDomain maps UserResponse to User with null fields`() {
         val userResponse = mockk<UserResponse> {
-                every { id } returns null
-                every { img } returns null
-                every { name } returns null
-                every { username } returns null
-            }
+            every { id } returns null
+            every { img } returns null
+            every { name } returns null
+            every { username } returns null
+        }
 
         val user = userResponse.toDomain()
 
@@ -47,11 +47,11 @@ class UserMapperTest {
     @Test
     fun `toEntity maps UserResponse to UserEntity with non-null fields`() {
         val userResponse = mockk<UserResponse> {
-                every { id } returns 123
-                every { img } returns "https://example.com/image.jpg"
-                every { name } returns "John Doe"
-                every { username } returns "johndoe"
-            }
+            every { id } returns 123
+            every { img } returns "https://example.com/image.jpg"
+            every { name } returns "John Doe"
+            every { username } returns "johndoe"
+        }
 
         val userEntity = userResponse.toEntity()
 
@@ -64,11 +64,11 @@ class UserMapperTest {
     @Test
     fun `toEntity maps UserResponse to UserEntity with null fields`() {
         val userResponse = mockk<UserResponse> {
-                every { id } returns null
-                every { img } returns null
-                every { name } returns null
-                every { username } returns null
-            }
+            every { id } returns null
+            every { img } returns null
+            every { name } returns null
+            every { username } returns null
+        }
 
         val userEntity = userResponse.toEntity()
 
@@ -81,11 +81,11 @@ class UserMapperTest {
     @Test
     fun `toDomain maps UserEntity to User with non-null fields`() {
         val userEntity = mockk<UserEntity> {
-                every { id } returns 123
-                every { image } returns "https://example.com/image.jpg"
-                every { name } returns "John Doe"
-                every { username } returns "johndoe"
-            }
+            every { id } returns 123
+            every { image } returns "https://example.com/image.jpg"
+            every { name } returns "John Doe"
+            every { username } returns "johndoe"
+        }
 
         val user = userEntity.toDomain()
 
@@ -98,11 +98,11 @@ class UserMapperTest {
     @Test
     fun `toDomain maps UserEntity to User with null fields`() {
         val userEntity = mockk<UserEntity> {
-                every { id } returns 0
-                every { image } returns ""
-                every { name } returns ""
-                every { username } returns ""
-            }
+            every { id } returns 0
+            every { image } returns ""
+            every { name } returns ""
+            every { username } returns ""
+        }
 
         val user = userEntity.toDomain()
 
