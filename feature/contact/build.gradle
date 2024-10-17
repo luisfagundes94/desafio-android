@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.luisfagundes.contact'
+    namespace 'com.picpay.desafio.android.feature.contact'
     compileSdk 34
 
     defaultConfig {
@@ -35,12 +35,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    packaging {
+        resources {
+            it.pickFirsts += ["META-INF/LICENSE.md", "META-INF/LICENSE-notice.md"]
+        }
+    }
 }
 
 dependencies {
     implementation project(":core:common")
     implementation project(":core:domain")
     implementation project(":core:designsystem")
+    implementation project(":core:testing")
 
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"

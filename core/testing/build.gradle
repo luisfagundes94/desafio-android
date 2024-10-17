@@ -1,12 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.devtools.ksp'
-    id 'dagger.hilt.android.plugin'
 }
 
 android {
-    namespace 'com.luisfagundes.core.testing'
+    namespace 'com.picpay.desafio.android.core.testing'
     compileSdk 34
 
     defaultConfig {
@@ -33,20 +31,4 @@ android {
 
 dependencies {
     implementation project(":core:domain")
-
-    // Hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    ksp "com.google.dagger:hilt-compiler:$hilt_version"
-
-    api "junit:junit:$junit_version"
-    api "io.mockk:mockk:$mockk_version"
-    api "androidx.arch.core:core-testing:$core_testing_version"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
-
-    api "androidx.test.espresso:espresso-core:$espresso_version"
-    api "androidx.test.espresso:espresso-intents:$espresso_version"
-    api "androidx.test.ext:junit:$junit_ext_version"
-    api "com.google.dagger:hilt-android-testing:$hilt_version"
-    api "io.mockk:mockk-android:$mockk_version"
-    api "com.google.dagger:hilt-android-compiler:$hilt_version"
 }

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.luisfagundes.core.common'
+    namespace 'com.picpay.desafio.android.core.common'
     compileSdk 34
 
     defaultConfig {

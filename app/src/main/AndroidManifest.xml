@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.picpay.desafio.android">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
@@ -16,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name="com.luisfagundes.contact.ContactListActivity" android:exported="true">
+        <activity android:name="com.picpay.desafio.android.feature.contact.ContactListActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
