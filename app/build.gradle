@@ -44,12 +44,6 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    packaging {
-        resources {
-            it.pickFirsts += ["META-INF/LICENSE.md", "META-INF/LICENSE-notice.md"]
-        }
-    }
-
     namespace "com.picpay.desafio.android"
 }
 
