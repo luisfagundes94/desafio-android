@@ -6,6 +6,7 @@ import androidx.test.runner.AndroidJUnitRunner
 import dagger.hilt.android.testing.HiltTestApplication
 import kotlin.jvm.java
 
+@Suppress("unused")
 class HiltTestRunner : AndroidJUnitRunner() {
     override fun newApplication(
         cl: ClassLoader?,
