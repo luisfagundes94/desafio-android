@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.core.domain.model.User
-import com.picpay.desafio.android.core.extensions.hide
-import com.picpay.desafio.android.core.extensions.show
 import com.picpay.desafio.android.databinding.ActivityMainBinding
 import com.picpay.desafio.android.presentation.adapter.UserListAdapter
 import dagger.hilt.android.AndroidEntryPoint
