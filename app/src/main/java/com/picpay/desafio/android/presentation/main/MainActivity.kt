@@ -49,15 +49,18 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun handleLoadingState() = with(binding) {
+        errorMessage.hide()
         progressBar.show()
     }
 
     private fun handleSuccessState(users: List<User>) = with(binding) {
+        errorMessage.hide()
         progressBar.hide()
         adapter.submitList(users)
     }
 
     private fun handleErrorState() = with(binding) {
         progressBar.hide()
+        errorMessage.show()
     }
 }
