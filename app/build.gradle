@@ -16,7 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.picpay.desafio.android.HiltTestRunner"
     }
 
     buildFeatures {
@@ -46,6 +46,12 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
+    packaging {
+        resources {
+            it.pickFirsts += ["META-INF/LICENSE.md", "META-INF/LICENSE-notice.md"]
+        }
+    }
+
     namespace "com.picpay.desafio.android"
 }
 
@@ -62,4 +68,9 @@ dependencies {
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
     ksp "com.google.dagger:hilt-compiler:$hilt_version"
+
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
+    kspAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 }

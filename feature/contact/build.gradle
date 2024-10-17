@@ -12,8 +12,6 @@ android {
     defaultConfig {
         minSdk 21
 
-        testInstrumentationRunner "com.picpay.desafio.android.HiltTestRunner"
-
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -35,12 +33,6 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
-    }
-
-    packaging {
-        resources {
-            it.pickFirsts += ["META-INF/LICENSE.md", "META-INF/LICENSE-notice.md"]
-        }
     }
 }
 
@@ -75,9 +67,4 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     testImplementation "io.mockk:mockk:$mockk_version"
     testImplementation "androidx.arch.core:core-testing:$core_testing_version"
-
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
-    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
-    kspAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 }
