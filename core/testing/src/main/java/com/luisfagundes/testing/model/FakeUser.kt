@@ -1,4 +1,4 @@
-package com.luisfagundes.data.model
+package com.luisfagundes.testing.model
 
 import com.luisfagundes.domain.model.User
 
