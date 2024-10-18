@@ -52,6 +52,8 @@ Exemplo: Se você faz uma alteração em um módulo de feature específico, como
 
 ## Injeção de Dependência
 
+A injeção de dependência é usada em um projeto para promover a flexibilidade, facilitar o teste e melhorar a manutenção do código. Ela permite que as dependências (objetos que uma classe precisa para funcionar) sejam fornecidas externamente em vez de serem criadas internamente pela própria classe.
+
 O framework utilizado para a injeção de depedência no projeto foi o Hilt. Escolhi essa tecnologia ao invés do Koin por alguns motivos:
 
 #### 1. Verificação em Tempo de Compilação
@@ -68,6 +70,8 @@ Hilt lida automaticamente com escopos e o ciclo de vida dos componentes do Andro
 
 ## Testes
 
+Testes unitários e instrumentados em um projeto grande é crucial para garantir qualidade, manutenção e escalabilidade do código.
+
 O framework utilizado para mock de objetos e compartamentos foi o MockK. Escolhi essa tecnologia ao invés do Mockito, pois:
 
 #### 1. Suporte Nativo a Kotlin
@@ -79,6 +83,8 @@ MockK foi projetado para trabalhar diretamente com as características da lingua
 No Kotlin, por padrão, todas as classes e funções são final, ou seja, não podem ser estendidas ou sobrescritas, o que pode causar dificuldades com Mockito, pois ele não consegue fazer mocking de classes final sem uma configuração extra.
 
 ## Integração Contínua
+
+(CI) é essencial para automatizar, agilizar e garantir a qualidade do processo de desenvolvimento de software.
 
 Foi utilizado o github actions para garantir que toda vez em que um push é feito no repositório do projeto, algumas etapas são acionadas para garantiar a confiabilidade e consistência da aplicação:
 
