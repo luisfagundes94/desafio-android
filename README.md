@@ -77,3 +77,11 @@ MockK foi projetado para trabalhar diretamente com as características da lingua
 #### 2. Mock de Classes e Funções Final
 
 No Kotlin, por padrão, todas as classes e funções são final, ou seja, não podem ser estendidas ou sobrescritas, o que pode causar dificuldades com Mockito, pois ele não consegue fazer mocking de classes final sem uma configuração extra.
+
+## Integração Contínua
+
+Foi utilizado o github actions para garantir que toda vez em que um push é feito no repositório do projeto, algumas etapas são acionadas para garantiar a confiabilidade e consistência da aplicação:
+
+- Verificar todos os testes unitários (Unit Testing)
+- Verificar a padronização e formatação de código em kotlin (Ktlint)
+- Analisar o código do projeto em busca de potenciais erros ou problemas relacionados à qualidade do código, desempenho, segurança e compatibilidade. (Android Lint)
