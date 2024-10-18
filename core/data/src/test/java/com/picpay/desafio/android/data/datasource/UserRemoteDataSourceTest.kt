@@ -1,8 +1,8 @@
 package com.picpay.desafio.android.data.datasource
 
-import com.picpay.desafio.android.data.datasource.remote.UserRemoteDataSource
-import com.picpay.desafio.android.data.datasource.remote.UserRemoteDataSourceImpl
-import com.picpay.desafio.android.data.model.fakeUserResponseList
+import com.picpay.desafio.android.data.datasource.remote.ContactRemoteDataSource
+import com.picpay.desafio.android.data.datasource.remote.ContactRemoteDataSourceImpl
+import com.picpay.desafio.android.data.model.fakeContactResponseList
 import com.picpay.desafio.android.data.service.PicPayService
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -18,29 +18,29 @@ class UserRemoteDataSourceTest {
 
     private val service: PicPayService = mockk()
 
-    private lateinit var userRemoteDataSource: UserRemoteDataSource
+    private lateinit var contactRemoteDataSource: ContactRemoteDataSource
 
     @Before
     fun setUp() {
-        userRemoteDataSource = UserRemoteDataSourceImpl(service)
+        contactRemoteDataSource = ContactRemoteDataSourceImpl(service)
     }
 
     @Test
-    fun `getUsers returns a list of users successfully`() = runTest {
-        coEvery { service.getUsers() } returns fakeUserResponseList
+    fun `getContactList returns a list of contacts successfully`() = runTest {
+        coEvery { service.getContactList() } returns fakeContactResponseList
 
-        val result = userRemoteDataSource.getUsers()
+        val result = contactRemoteDataSource.getContactList()
 
-        assertEquals(fakeUserResponseList, result)
+        assertEquals(fakeContactResponseList, result)
     }
 
     @Test
-    fun `getUsers throws an exception when service fails`() = runTest {
+    fun `getContactList throws an exception when service fails`() = runTest {
         val exception = Exception("Network Error")
-        coEvery { service.getUsers() } throws exception
+        coEvery { service.getContactList() } throws exception
 
         try {
-            userRemoteDataSource.getUsers()
+            contactRemoteDataSource.getContactList()
         } catch (e: Exception) {
             assertTrue(true)
             assertEquals("Network Error", e.message)

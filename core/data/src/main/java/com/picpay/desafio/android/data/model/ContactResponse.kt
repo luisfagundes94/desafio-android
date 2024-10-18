@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class UserResponse(
+data class ContactResponse(
     @SerializedName("id") val id: Int? = null,
     @SerializedName("img") val img: String? = null,
     @SerializedName("name") val name: String? = null,

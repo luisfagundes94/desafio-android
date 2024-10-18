@@ -9,11 +9,11 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/picture"
-        android:layout_width="@dimen/user_image_size"
-        android:layout_height="@dimen/user_image_size"
+        android:layout_width="@dimen/contact_image_size"
+        android:layout_height="@dimen/contact_image_size"
         android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/user_image_vertical_margin"
-        android:layout_marginBottom="@dimen/user_image_vertical_margin"
+        android:layout_marginTop="@dimen/contact_image_vertical_margin"
+        android:layout_marginBottom="@dimen/contact_image_vertical_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

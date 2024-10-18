@@ -3,8 +3,8 @@ package com.picpay.desafio.android.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "users")
-data class UserEntity(
+@Entity(tableName = "contacts")
+data class ContactEntity(
     @PrimaryKey val id: Int,
     val image: String,
     val name: String,

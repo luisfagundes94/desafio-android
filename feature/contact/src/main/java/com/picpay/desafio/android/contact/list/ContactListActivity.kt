@@ -5,15 +5,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.picpay.desafio.android.contact.R
-import com.picpay.desafio.android.contact.adapter.UserListAdapter
+import com.picpay.desafio.android.contact.adapter.ContactListAdapter
 import com.picpay.desafio.android.contact.databinding.ActivityContactListBinding
-import com.picpay.desafio.android.domain.model.User
+import com.picpay.desafio.android.domain.model.Contact
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ContactListActivity : AppCompatActivity(R.layout.activity_contact_list) {
     private lateinit var binding: ActivityContactListBinding
-    private lateinit var adapter: UserListAdapter
+    private lateinit var adapter: ContactListAdapter
 
     private val viewModel: ContactListViewModel by viewModels()
 
@@ -30,7 +30,7 @@ class ContactListActivity : AppCompatActivity(R.layout.activity_contact_list) {
     }
 
     private fun setUpAdapter() = with(binding) {
-        adapter = UserListAdapter()
+        adapter = ContactListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this@ContactListActivity)
     }
@@ -49,14 +49,14 @@ class ContactListActivity : AppCompatActivity(R.layout.activity_contact_list) {
         viewFlipper.displayedChild = LOADING_VIEW
     }
 
-    private fun handleSuccessState(users: List<User>) = with(binding) {
+    private fun handleSuccessState(contactList: List<Contact>) = with(binding) {
         viewFlipper.displayedChild = SUCCESS_VIEW
-        adapter.submitList(users)
+        adapter.submitList(contactList)
     }
 
     private fun handleErrorState() = with(binding) {
         viewFlipper.displayedChild = ERROR_VIEW
-        errorComponent.retryButton.setOnClickListener { viewModel.getUsers() }
+        errorComponent.retryButton.setOnClickListener { viewModel.getContactList() }
     }
 
     companion object {

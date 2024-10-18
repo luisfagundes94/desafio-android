@@ -1,9 +1,7 @@
-package com.picpay.desafio.android.data.service
+package com.picpay.desafio.android.data.datasource.remote
 
 import com.picpay.desafio.android.data.model.ContactResponse
-import retrofit2.http.GET
 
-interface PicPayService {
-    @GET("users")
+interface ContactRemoteDataSource {
     suspend fun getContactList(): List<ContactResponse>
 }

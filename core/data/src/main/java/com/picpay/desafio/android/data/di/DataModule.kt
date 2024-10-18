@@ -2,15 +2,15 @@ package com.picpay.desafio.android.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.picpay.desafio.android.data.database.ContactDao
 import com.picpay.desafio.android.data.database.PicPayDatabase
-import com.picpay.desafio.android.data.database.UserDao
-import com.picpay.desafio.android.data.datasource.local.UserLocalDataSource
-import com.picpay.desafio.android.data.datasource.local.UserLocalDataSourceImpl
-import com.picpay.desafio.android.data.datasource.remote.UserRemoteDataSource
-import com.picpay.desafio.android.data.datasource.remote.UserRemoteDataSourceImpl
-import com.picpay.desafio.android.data.repository.UserRepositoryImpl
+import com.picpay.desafio.android.data.datasource.local.ContactLocalDataSource
+import com.picpay.desafio.android.data.datasource.local.ContactLocalDataSourceImpl
+import com.picpay.desafio.android.data.datasource.remote.ContactRemoteDataSource
+import com.picpay.desafio.android.data.datasource.remote.ContactRemoteDataSourceImpl
+import com.picpay.desafio.android.data.repository.ContactRepositoryImpl
 import com.picpay.desafio.android.data.service.PicPayService
-import com.picpay.desafio.android.domain.repository.UserRepository
+import com.picpay.desafio.android.domain.repository.ContactRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,18 +29,18 @@ private const val PIC_PAY_DATABASE_NAME = "picpay_database"
 object DataModule {
 
     @Provides
-    fun provideUserLocalDataSource(userDao: UserDao): UserLocalDataSource =
-        UserLocalDataSourceImpl(userDao)
+    fun provideContactLocalDataSource(contactDao: ContactDao): ContactLocalDataSource =
+        ContactLocalDataSourceImpl(contactDao)
 
     @Provides
-    fun provideUserRemoteDataSource(service: PicPayService): UserRemoteDataSource =
-        UserRemoteDataSourceImpl(service)
+    fun provideContactRemoteDataSource(service: PicPayService): ContactRemoteDataSource =
+        ContactRemoteDataSourceImpl(service)
 
     @Provides
-    fun provideUserRepository(
-        remoteDataSource: UserRemoteDataSource,
-        localDataSource: UserLocalDataSource
-    ): UserRepository = UserRepositoryImpl(remoteDataSource, localDataSource)
+    fun provideContactRepository(
+        remoteDataSource: ContactRemoteDataSource,
+        localDataSource: ContactLocalDataSource
+    ): ContactRepository = ContactRepositoryImpl(remoteDataSource, localDataSource)
 
     @Provides
     fun provideDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
@@ -50,7 +50,7 @@ object DataModule {
     ).build()
 
     @Provides
-    fun provideUserDao(database: PicPayDatabase) = database.userDao()
+    fun provideContactDao(database: PicPayDatabase) = database.contactDao()
 
     @Provides
     fun provideOkHttpClient() = OkHttpClient.Builder()

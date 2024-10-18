@@ -3,21 +3,21 @@ package com.picpay.desafio.android.contact.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.contact.R
-import com.picpay.desafio.android.contact.databinding.ListItemUserBinding
-import com.picpay.desafio.android.domain.model.User
+import com.picpay.desafio.android.contact.databinding.ListItemContactBinding
+import com.picpay.desafio.android.domain.model.Contact
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-class UserListItemViewHolder(
-    private val binding: ListItemUserBinding
+class ContactListItemViewHolder(
+    private val binding: ListItemContactBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(user: User) = with(binding) {
-        name.text = user.name
-        username.text = user.username
+    fun bind(contact: Contact) = with(binding) {
+        name.text = contact.name
+        username.text = contact.username
         progressBar.visibility = View.VISIBLE
 
         Picasso.get()
-            .load(user.image)
+            .load(contact.image)
             .error(R.drawable.ic_round_account_circle)
             .into(picture, picassoCallback())
     }

@@ -1,25 +1,25 @@
 package com.picpay.desafio.android.data.mapper
 
-import com.picpay.desafio.android.data.model.UserEntity
-import com.picpay.desafio.android.data.model.UserResponse
-import com.picpay.desafio.android.domain.model.User
+import com.picpay.desafio.android.data.model.ContactEntity
+import com.picpay.desafio.android.data.model.ContactResponse
+import com.picpay.desafio.android.domain.model.Contact
 
-object UserMapper {
-    fun UserResponse.toDomain() = User(
+object ContactMapper {
+    fun ContactResponse.toDomain() = Contact(
         id = id ?: 0,
         image = img ?: "",
         name = name ?: "",
         username = username ?: ""
     )
 
-    fun UserEntity.toDomain() = User(
+    fun ContactEntity.toDomain() = Contact(
         id = this.id,
         image = this.image,
         name = this.name,
         username = this.username
     )
 
-    fun UserResponse.toEntity() = UserEntity(
+    fun ContactResponse.toEntity() = ContactEntity(
         id = this.id ?: 0,
         image = this.img ?: "",
         name = this.name ?: "",

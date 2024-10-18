@@ -1,14 +1,14 @@
 package com.picpay.desafio.android.data.model
 
-val fakeUserResponse = UserResponse(
+val fakeContactResponse = ContactResponse(
     id = 1,
     img = "https://randomuser.me/api/portraits",
-    name = "Fake User",
-    username = "fakeuser"
+    name = "Fake Contact",
+    username = "fakeContact"
 )
 
-val fakeUserResponseList = listOf(
-    fakeUserResponse,
-    fakeUserResponse.copy(id = 2),
-    fakeUserResponse.copy(id = 3)
+val fakeContactResponseList = listOf(
+    fakeContactResponse,
+    fakeContactResponse.copy(id = 2),
+    fakeContactResponse.copy(id = 3)
 )

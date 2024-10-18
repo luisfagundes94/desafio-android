@@ -1,16 +1,16 @@
 package com.picpay.desafio.android.testing.model
 
-import com.picpay.desafio.android.domain.model.User
+import com.picpay.desafio.android.domain.model.Contact
 
-val fakeUser = User(
+val fakeContact = Contact(
     id = 1,
     image = "https://randomuser.me/api/portraits",
-    name = "Fake User",
-    username = "fakeuser"
+    name = "Fake Contact",
+    username = "fakeContact"
 )
 
-val fakeUserList = listOf(
-    fakeUser,
-    fakeUser.copy(id = 2),
-    fakeUser.copy(id = 3)
+val fakeContactList = listOf(
+    fakeContact,
+    fakeContact.copy(id = 2),
+    fakeContact.copy(id = 3)
 )

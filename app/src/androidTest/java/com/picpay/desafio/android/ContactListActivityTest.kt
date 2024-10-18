@@ -12,7 +12,7 @@ import com.picpay.desafio.android.contact.list.ContactListActivity
 import com.picpay.desafio.android.contact.list.ContactListUiState
 import com.picpay.desafio.android.contact.list.ContactListViewModel
 import com.picpay.desafio.android.designsystem.R as designSystemR
-import com.picpay.desafio.android.domain.model.User
+import com.picpay.desafio.android.domain.model.Contact
 import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -31,14 +31,14 @@ class ContactListActivityTest {
     @JvmField
     val viewModel: ContactListViewModel = mockk(relaxed = true)
 
-    val userList = listOf(
-        User(
+    val contactList = listOf(
+        Contact(
             id = 1,
             name = "Bob Williams",
             username = "bob",
             image = "https://avatars.githubusercontent.com/u/1?v=4"
         ),
-        User(
+        Contact(
             id = 2,
             name = "Sam Smith",
             username = "sam",
@@ -73,7 +73,7 @@ class ContactListActivityTest {
 
     @Test
     fun testSuccessStateIsDisplayed() {
-        every { viewModel.uiState } returns MutableLiveData(ContactListUiState.Success(userList))
+        every { viewModel.uiState } returns MutableLiveData(ContactListUiState.Success(contactList))
 
         launchContactListActivity()
 

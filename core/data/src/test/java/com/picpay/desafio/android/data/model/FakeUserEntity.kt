@@ -1,14 +1,14 @@
 package com.picpay.desafio.android.data.model
 
-val fakeUserEntity = UserEntity(
+val fakeContactEntity = ContactEntity(
     id = 1,
     image = "https://randomuser.me/api/portraits",
-    name = "Fake User",
-    username = "fakeuser"
+    name = "Fake Contact",
+    username = "fakeContact"
 )
 
-val fakeUserEntityList = listOf(
-    fakeUserEntity,
-    fakeUserEntity.copy(id = 2),
-    fakeUserEntity.copy(id = 3)
+val fakeContactEntityList = listOf(
+    fakeContactEntity,
+    fakeContactEntity.copy(id = 2),
+    fakeContactEntity.copy(id = 3)
 )

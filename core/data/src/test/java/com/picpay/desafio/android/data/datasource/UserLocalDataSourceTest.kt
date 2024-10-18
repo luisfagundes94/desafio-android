@@ -1,8 +1,8 @@
 package com.picpay.desafio.android.data.datasource
 
-import com.picpay.desafio.android.data.database.UserDao
-import com.picpay.desafio.android.data.datasource.local.UserLocalDataSourceImpl
-import com.picpay.desafio.android.data.model.fakeUserEntityList
+import com.picpay.desafio.android.data.database.ContactDao
+import com.picpay.desafio.android.data.datasource.local.ContactLocalDataSourceImpl
+import com.picpay.desafio.android.data.model.fakeContactEntityList
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.just
@@ -17,41 +17,41 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class UserLocalDataSourceTest {
 
-    private val userDao: UserDao = mockk()
+    private val contactDao: ContactDao = mockk()
 
-    private lateinit var userLocalDataSource: UserLocalDataSourceImpl
+    private lateinit var userLocalDataSource: ContactLocalDataSourceImpl
 
     @Before
     fun setUp() {
-        userLocalDataSource = UserLocalDataSourceImpl(userDao)
+        userLocalDataSource = ContactLocalDataSourceImpl(contactDao)
     }
 
     @Test
-    fun `getAllUsers returns a list of users from database`() = runTest {
-        coEvery { userDao.getAllUsers() } returns fakeUserEntityList
+    fun `getContactList returns a list of contacts from database`() = runTest {
+        coEvery { contactDao.getAll() } returns fakeContactEntityList
 
-        val result = userLocalDataSource.getAllUsers()
+        val result = userLocalDataSource.getContactList()
 
-        assertEquals(fakeUserEntityList, result)
+        assertEquals(fakeContactEntityList, result)
 
-        coVerify(exactly = 1) { userDao.getAllUsers() }
+        coVerify(exactly = 1) { contactDao.getAll() }
     }
 
     @Test
-    fun `insertUsers inserts a list of users into the database`() = runTest {
-        coEvery { userDao.insertUsers(fakeUserEntityList) } just runs
+    fun `insertContactList inserts a list of contacts into the database`() = runTest {
+        coEvery { contactDao.insertAll(fakeContactEntityList) } just runs
 
-        userLocalDataSource.insertUsers(fakeUserEntityList)
+        userLocalDataSource.insertContactList(fakeContactEntityList)
 
-        coVerify(exactly = 1) { userDao.insertUsers(fakeUserEntityList) }
+        coVerify(exactly = 1) { contactDao.insertAll(fakeContactEntityList) }
     }
 
     @Test
-    fun `clearUsers clears the user table in the database`() = runTest {
-        coEvery { userDao.clearUsers() } just runs
+    fun `clearContactList clears the contacts table in the database`() = runTest {
+        coEvery { contactDao.clearAll() } just runs
 
-        userLocalDataSource.clearUsers()
+        userLocalDataSource.clearContactList()
 
-        coVerify(exactly = 1) { userDao.clearUsers() }
+        coVerify(exactly = 1) { contactDao.clearAll() }
     }
 }

@@ -1,6 +1,6 @@
 package com.picpay.desafio.android.domain.model
 
-data class User(
+data class Contact(
     val id: Int,
     val name: String,
     val username: String,
