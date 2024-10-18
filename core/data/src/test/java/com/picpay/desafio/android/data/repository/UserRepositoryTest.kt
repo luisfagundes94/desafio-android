@@ -1,12 +1,10 @@
 package com.picpay.desafio.android.data.repository
 
 import com.picpay.desafio.android.common.Result
-import com.picpay.desafio.android.data.database.UserDao
 import com.picpay.desafio.android.data.datasource.local.UserLocalDataSource
 import com.picpay.desafio.android.data.datasource.remote.UserRemoteDataSource
 import com.picpay.desafio.android.data.model.fakeUserEntityList
 import com.picpay.desafio.android.data.model.fakeUserResponseList
-import com.picpay.desafio.android.data.service.PicPayService
 import com.picpay.desafio.android.domain.repository.UserRepository
 import com.picpay.desafio.android.testing.model.fakeUserList
 import io.mockk.Called

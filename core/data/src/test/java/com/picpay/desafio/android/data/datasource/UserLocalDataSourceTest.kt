@@ -5,8 +5,8 @@ import com.picpay.desafio.android.data.datasource.local.UserLocalDataSourceImpl
 import com.picpay.desafio.android.data.model.fakeUserEntityList
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.mockk
 import io.mockk.just
+import io.mockk.mockk
 import io.mockk.runs
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
