@@ -3,7 +3,14 @@ package com.picpay.desafio.android.data.di
 import android.content.Context
 import androidx.room.Room
 import com.picpay.desafio.android.data.database.PicPayDatabase
+import com.picpay.desafio.android.data.database.UserDao
+import com.picpay.desafio.android.data.datasource.local.UserLocalDataSource
+import com.picpay.desafio.android.data.datasource.local.UserLocalDataSourceImpl
+import com.picpay.desafio.android.data.datasource.remote.UserRemoteDataSource
+import com.picpay.desafio.android.data.datasource.remote.UserRemoteDataSourceImpl
+import com.picpay.desafio.android.data.repository.UserRepositoryImpl
 import com.picpay.desafio.android.data.service.PicPayService
+import com.picpay.desafio.android.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +27,21 @@ private const val PIC_PAY_DATABASE_NAME = "picpay_database"
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+
+    @Provides
+    fun provideUserLocalDataSource(userDao: UserDao): UserLocalDataSource =
+        UserLocalDataSourceImpl(userDao)
+
+    @Provides
+    fun provideUserRemoteDataSource(service: PicPayService): UserRemoteDataSource =
+        UserRemoteDataSourceImpl(service)
+
+    @Provides
+    fun provideUserRepository(
+        remoteDataSource: UserRemoteDataSource,
+        localDataSource: UserLocalDataSource
+    ): UserRepository = UserRepositoryImpl(remoteDataSource, localDataSource)
+
     @Provides
     fun provideDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
         context,
