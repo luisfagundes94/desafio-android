@@ -89,5 +89,5 @@ No Kotlin, por padrão, todas as classes e funções são final, ou seja, não p
 Foi utilizado o github actions para garantir que toda vez em que um push é feito no repositório do projeto, algumas etapas são acionadas para garantiar a confiabilidade e consistência da aplicação:
 
 - Verificar todos os testes unitários (Unit Testing)
-- Verificar a padronização e formatação de código em kotlin (Ktlint)
+- Verificar a padronização e formatação de código em Kotlin (Ktlint)
 - Analisar o código do projeto em busca de potenciais erros ou problemas relacionados à qualidade do código, desempenho, segurança e compatibilidade. (Android Lint)
