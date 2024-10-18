@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import com.picpay.desafio.android.common.Result
 import com.picpay.desafio.android.contact.list.ContactListUiState
 import com.picpay.desafio.android.contact.list.ContactListViewModel
-import com.picpay.desafio.android.domain.repository.ContactRepository
+import com.picpay.desafio.android.domain.usecase.GetContactList
 import com.picpay.desafio.android.testing.model.fakeContactList
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -25,16 +25,16 @@ class ContactListViewModelTest {
 
     private val testDispatcher = UnconfinedTestDispatcher()
 
-    private val repository = mockk<ContactRepository>()
+    private val getContactList = mockk<GetContactList>()
     private val observer = mockk<Observer<ContactListUiState>>(relaxed = true)
 
     private lateinit var viewModel: ContactListViewModel
 
     @Before
     fun setUp() {
-        coEvery { repository.getContactList() } returns Result.Success(emptyList())
+        coEvery { getContactList.invoke(any()) } returns Result.Success(emptyList())
 
-        viewModel = ContactListViewModel(repository, testDispatcher)
+        viewModel = ContactListViewModel(getContactList, testDispatcher)
         viewModel.uiState.observeForever(observer)
     }
 
@@ -45,7 +45,7 @@ class ContactListViewModelTest {
 
     @Test
     fun `getContactList should update uiState with Success when repository returns Success`() {
-        coEvery { repository.getContactList() } returns Result.Success(fakeContactList)
+        coEvery { getContactList.invoke(any()) } returns Result.Success(fakeContactList)
 
         viewModel.getContactList()
 
@@ -60,7 +60,7 @@ class ContactListViewModelTest {
     @Test
     fun `getContactList should update uiState with Error when repository returns Error`() {
         val exception = Exception("Error fetching contacts")
-        coEvery { repository.getContactList() } returns Result.Error(exception)
+        coEvery { getContactList.invoke(any()) } returns Result.Error(exception)
 
         viewModel.getContactList()
 

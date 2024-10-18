@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.picpay.desafio.android.common.Result
 import com.picpay.desafio.android.common.dispatcher.Dispatcher
 import com.picpay.desafio.android.common.dispatcher.PicPayDispatchers
-import com.picpay.desafio.android.domain.repository.ContactRepository
+import com.picpay.desafio.android.domain.usecase.GetContactList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class ContactListViewModel @Inject constructor(
-    private val repository: ContactRepository,
+    private val getContactList: GetContactList,
     @Dispatcher(PicPayDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
     private val _uiState = MutableLiveData<ContactListUiState>()
@@ -25,10 +25,10 @@ class ContactListViewModel @Inject constructor(
         getContactList()
     }
 
-    fun getContactList() {
+    fun getContactList(sortAlphabetically: Boolean = false) {
         _uiState.value = ContactListUiState.Loading
         viewModelScope.launch(dispatcher) {
-            when (val result = repository.getContactList()) {
+            when (val result = getContactList.invoke(sortAlphabetically)) {
                 is Result.Success -> _uiState.postValue(ContactListUiState.Success(result.data))
                 is Result.Error -> _uiState.postValue(ContactListUiState.Error(result.exception))
             }
