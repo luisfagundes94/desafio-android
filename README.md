@@ -82,6 +82,10 @@ MockK foi projetado para trabalhar diretamente com as características da lingua
 
 No Kotlin, por padrão, todas as classes e funções são final, ou seja, não podem ser estendidas ou sobrescritas, o que pode causar dificuldades com Mockito, pois ele não consegue fazer mocking de classes final sem uma configuração extra.
 
+## Ktlint (Formatador de código)
+
+Ktlint é uma ferramenta de linter e formatador para o código Kotlin. Ele é utilizado para garantir que o código siga um padrão de estilo definido, ajudando a manter a consistência e legibilidade do código em um projeto. Essa padronização é importante em projeto que contém diversos times.
+
 ## Integração Contínua
 
 (CI) é essencial para automatizar, agilizar e garantir a qualidade do processo de desenvolvimento de software.
