@@ -6,9 +6,11 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import com.picpay.desafio.android.contact.R as contactR
 import com.picpay.desafio.android.contact.list.ContactListFragment
 import com.picpay.desafio.android.contact.list.ContactListUiState
 import com.picpay.desafio.android.contact.list.ContactListViewModel
+import com.picpay.desafio.android.designsystem.R as designSystemR
 import com.picpay.desafio.android.domain.model.Contact
 import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -18,8 +20,6 @@ import io.mockk.mockk
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import com.picpay.desafio.android.contact.R as contactR
-import com.picpay.desafio.android.designsystem.R as designSystemR
 
 @HiltAndroidTest
 class ContactListFragmentTest : Fragment() {
