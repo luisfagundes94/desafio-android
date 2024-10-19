@@ -52,16 +52,11 @@ class ContactListFragmentTest : Fragment() {
     }
 
     @Test
-    fun titleIsDisplayedInAnyState() {
+    fun titleAndSortButtonAreDisplayedNoMatterTheState() {
         launchFragmentInHiltContainer<ContactListFragment>()
 
         onView(withId(contactR.id.title))
             .check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun sortButtonIsDisplayedInAnyState() {
-        launchFragmentInHiltContainer<ContactListFragment>()
 
         onView(withId(contactR.id.sort_button))
             .check(matches(isDisplayed()))
