@@ -18,8 +18,11 @@ class ContactListViewModel @Inject constructor(
     private val getContactList: GetContactList,
     @Dispatcher(PicPayDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
+
     private val _uiState = MutableLiveData<ContactListUiState>()
     val uiState: LiveData<ContactListUiState> = _uiState
+
+    private var sortAlphabetically = false
 
     init {
         getContactList()
@@ -33,5 +36,10 @@ class ContactListViewModel @Inject constructor(
                 is Result.Error -> _uiState.postValue(ContactListUiState.Error(result.exception))
             }
         }
+    }
+
+    fun sortContactList() {
+        sortAlphabetically = !sortAlphabetically
+        getContactList(sortAlphabetically)
     }
 }

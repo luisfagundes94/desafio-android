@@ -8,6 +8,7 @@ import com.picpay.desafio.android.contact.list.ContactListViewModel
 import com.picpay.desafio.android.domain.usecase.GetContactList
 import com.picpay.desafio.android.testing.model.fakeContactList
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.verify
 import java.lang.Exception
@@ -32,7 +33,7 @@ class ContactListViewModelTest {
 
     @Before
     fun setUp() {
-        coEvery { getContactList.invoke(any()) } returns Result.Success(emptyList())
+        coEvery { getContactList.invoke(any()) } returns Result.Success(fakeContactList)
 
         viewModel = ContactListViewModel(getContactList, testDispatcher)
         viewModel.uiState.observeForever(observer)
@@ -53,8 +54,6 @@ class ContactListViewModelTest {
             observer.onChanged(ContactListUiState.Loading)
             observer.onChanged(ContactListUiState.Success(fakeContactList))
         }
-
-        viewModel.uiState.removeObserver(observer)
     }
 
     @Test
@@ -68,7 +67,5 @@ class ContactListViewModelTest {
             observer.onChanged(ContactListUiState.Loading)
             observer.onChanged(ContactListUiState.Error(exception))
         }
-
-        viewModel.uiState.removeObserver(observer)
     }
 }

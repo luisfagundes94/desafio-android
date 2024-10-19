@@ -1,33 +1,40 @@
 package com.picpay.desafio.android.contact.list
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.picpay.desafio.android.contact.R
+import com.picpay.desafio.android.common.base.BaseFragment
 import com.picpay.desafio.android.contact.adapter.ContactListAdapter
 import com.picpay.desafio.android.contact.databinding.FragmentContactListBinding
 import com.picpay.desafio.android.domain.model.Contact
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ContactListFragment : Fragment(R.layout.fragment_contact_list) {
+class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
 
-    private lateinit var binding: FragmentContactListBinding
     private lateinit var adapter: ContactListAdapter
 
     private val viewModel: ContactListViewModel by viewModels()
 
+    override fun inflateBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentContactListBinding {
+        return FragmentContactListBinding.inflate(inflater, container, false)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpBinding(view)
+        setUpListeners()
         setUpAdapter()
         setUpObservers()
     }
 
-    private fun setUpBinding(view: View) {
-        binding = FragmentContactListBinding.bind(view)
+    private fun setUpListeners() = with(binding) {
+        sortButton.setOnClickListener { viewModel.sortContactList() }
     }
 
     private fun setUpAdapter() = with(binding) {
