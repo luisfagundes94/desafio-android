@@ -91,3 +91,7 @@ Foi utilizado o github actions para garantir que toda vez em que um push é feit
 - Verificar todos os testes unitários (Unit Testing)
 - Verificar a padronização e formatação de código em Kotlin (Ktlint)
 - Analisar o código do projeto em busca de potenciais erros ou problemas relacionados à qualidade do código, desempenho, segurança e compatibilidade. (Android Lint)
+
+## Observações
+
+Implementei uma feature onde a lista de contatos pode ser ordenada alfabeticamente, apenas para demonstrar a responsabilidade da lógica de regra de negócios em casos de uso (useCases)
